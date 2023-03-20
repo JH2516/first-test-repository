@@ -1,6 +1,6 @@
 #include <iostream>
-int main
+int main()
 {
-	std::<<"JH's system"<<std::end1;
+	std::cout<<"JH's system"<<std::endl;
 	return 0;
 }

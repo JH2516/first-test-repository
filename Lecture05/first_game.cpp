@@ -32,6 +32,11 @@ int print_introduction_screen()
     printf("ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡBack to title? (Y/N)ㅡㅡ\n");
     return 0;
 }
+void gotoxy(int x, int y)
+{
+    COORD pos = {x,y};
+    SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), pos);
+}
 int main()
 {
     int status = 0;

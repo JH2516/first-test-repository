@@ -2,8 +2,8 @@
 #include <stdio.h>
 #include <conio.h>
 #include <Windows.h>
-
-//status = 0
+int power = 1;
+int status = 0
 int print_title_screen()
 {
     printf("ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ\n");
@@ -85,9 +85,7 @@ void gotoxy(int x, int y)
 }
 int main()
 {
-    int status = 0;
     char key = 0;
-    bool power = true;
     print_title_screen();
     while (power)
     {

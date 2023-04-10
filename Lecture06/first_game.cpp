@@ -36,9 +36,14 @@ int print_game_screen()
 {
     int height;
     int weight;
+    printf("맵의 크기를 입력해 주세요\n");
     scanf_s("%d %d", &height, &weight);
     gotoxy(0, 0);
-    printf("ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ\n");
+    for (int a = 0; i < weight+2; a++)
+    {
+        printf("ㅡ");
+    }
+    printf("\n");
     for (int i = 0; i < height; i++)
     {
         printf("ㅡ");
@@ -48,7 +53,10 @@ int print_game_screen()
         }
         printf("ㅡ\n");
     }
-    printf("ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ\n");
+    for (int a = 0; i < weight+2; a++)
+    {
+        printf("ㅡ");
+    }
 
     return 0;
 }
@@ -88,15 +96,18 @@ int main()
     char key = 0;
     print_title_screen();
     while (power)
+    //메인 화면 시작, 고정
     {
         key = _getch();
         switch (key)
         {
         case 49:
+        //게임 시작
             system("cls");
             print_game_screen();
             status = 1;
         case 50:
+        //게임 설명
             system("cls");
             print_introduction_screen();
             status = 2;
@@ -121,11 +132,13 @@ int main()
                 break;
             }break;
         case 51:
-
+        //게임 랭킹
         case 27:
+        //게임 끄기1
             power = false;
             break;
         case 52:
+        //게임 끄기2
             power = false;
             break;
         default:

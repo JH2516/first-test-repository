@@ -1,7 +1,7 @@
 #pragma once//#define _IS_THIS_HEADER_INCLUDED
 #define KEY_ESC 27
 #define KEY_LEFT 'a'
-#define KEY_RIGHT 'b'
+#define KEY_RIGHT 'd'
 #define KEY_ENTER 13
 #include<iostream>
 #include <conio.h>
@@ -13,7 +13,7 @@
 #define ANSI_COLOR_MAGENTA  "\x1b[35m"
 #define ANSI_COLOR_CYAN     "\x1b[36m"
 #define ANSI_COLOR_RESET    "\x1b[0m"
-void gotoxy(int x, int y) {
+void gOtOxy(int x, int y) {
 	//x, y 좌표 설정
 	COORD pos = { x,y };
 	//커서 이동
@@ -27,16 +27,18 @@ namespace MuSoeun {
 		~MGameLoop() {};
 		void Initialize()
 		{
-			gotoxy(3, 15);
 			isGameRunning = true;
+			gOtOxy(3, 15);
 			std::cout << ANSI_COLOR_RESET"초기화 완료" << std::endl;
 		}
 		void Release()
 		{
-			std::cout << "시스템 해제 완료" << std::endl;
+			gOtOxy(3, 16);
+			std::cout << ANSI_COLOR_RESET"시스템 해제 완료" << std::endl;
 		}
 		void Update()
 		{
+			gOtOxy(3, 17);
 			std::cout << ANSI_COLOR_RESET"업데이트 완료" << std::endl;
 			if (_kbhit())
 			{
@@ -45,7 +47,7 @@ namespace MuSoeun {
 		}
 		void Render()
 		{
-			gotoxy(3, 17);
+			gOtOxy(3, 18);
 			std::cout << ANSI_COLOR_RESET"렌더링 완료" << std::endl;
 		}
 		void Run()
@@ -62,26 +64,28 @@ namespace MuSoeun {
 		{
 			switch (KeyInput)
 			{
+				int a, b;
 				//한번 ESC누르면 일시정지, 그 상황에서 나가기 선택하면 나가짐
 			case KEY_ESC:
-				isGameRunning = false;
+				if (_kbhit() == 12)
+				{
+					isGameRunning = false;
+				}
 				break;
 			case KEY_LEFT:
-				gotoxy(5, 5);
+				gOtOxy(5, 5);
 				std::cout << ANSI_COLOR_RED"좌측 눌림" << std::endl;
 				break;
 			case KEY_RIGHT:
-				gotoxy(5, 5);
+				gOtOxy(5, 5);
 				std::cout << ANSI_COLOR_GREEN"우측 눌림" << std::endl;
-				isGameRunning = false;
 				break;
 			case KEY_ENTER:
-				gotoxy(5, 5);
+				gOtOxy(5, 5);
 				std::cout << ANSI_COLOR_BLUE"엔터 눌림" << std::endl;
-				isGameRunning = false;
 				break;
 			default:
-				isGameRunning = true;
+				gOtOxy(2, 5);
 				break;
 			}
 		}
